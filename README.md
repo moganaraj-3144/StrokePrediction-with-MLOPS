@@ -8,7 +8,6 @@ How to run?
 STEPS:
 Clone the repository
 
-https://github.com/entbappy/End-to-End-Wine-Quality-Prediction
 STEP 01- Create a conda environment after opening the repository
 conda create -n mlproj python=3.8 -y
 conda activate mlproj
