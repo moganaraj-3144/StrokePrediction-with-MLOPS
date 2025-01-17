@@ -66,12 +66,19 @@ class DataTransformation:
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
-            
+
+            logging.info("Read train and test data completed")
+
             # Remove rows with gender as 'Other' in train and test sets
             train_df = train_df[train_df['gender'] != 'Other']
             test_df = test_df[test_df['gender'] != 'Other']
+            
+            # Replace the num values in 'hypertension' and 'heart_disease' columns to yes/no
+            binary_columns = ['hypertension', 'heart_disease']
+            for col in binary_columns:
+                train_df[col] = train_df[col].replace({1 : 'Yes', 0 : 'No'})
+                test_df[col] = test_df[col].replace({1 : 'Yes', 0 : 'No'})
 
-            logging.info("Read train and test data completed")
             
             logging.info("Obtaining preprocessing object")
 
